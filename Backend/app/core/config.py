@@ -3,12 +3,13 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 import os
 
 class Settings(BaseSettings):
-    HOST: str = "127.0.0.1"
-    PORT: int = 8000
-    DEBUG: bool = True
+    HOST: str = os.getenv("HOST", "0.0.0.0")
+    PORT: int = int(os.getenv("PORT", "8000"))
+    DEBUG: bool = os.getenv("DEBUG", "true").lower() == "true"
     
     # MongoDB
     MONGODB_URL: str = "mongodb://localhost:27017"
+    MONGODB_TIMEOUT_MS: int = 5000
     DATABASE_NAME: str = "two_player_guessing_game"
     
     # Security

@@ -14,10 +14,10 @@ class DatabaseManager:
     async def connect(self):
         try:
             logger.info(f"Connecting to MongoDB at {settings.MONGODB_URL}...")
-            # Try real MongoDB with a fast 1.5s server selection timeout
+            # Try real MongoDB with configured server selection timeout (default: 5s)
             real_client = AsyncIOMotorClient(
                 settings.MONGODB_URL,
-                serverSelectionTimeoutMS=1500
+                serverSelectionTimeoutMS=settings.MONGODB_TIMEOUT_MS
             )
             # Ping to verify reachability
             await real_client.admin.command('ping')

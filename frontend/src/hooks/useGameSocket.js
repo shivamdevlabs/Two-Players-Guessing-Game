@@ -1,6 +1,23 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 
-const WS_BASE = import.meta.env.VITE_WS_URL || "ws://127.0.0.1:8000";
+function resolveWsBase() {
+  if (import.meta.env.VITE_WS_URL) {
+    return import.meta.env.VITE_WS_URL.replace(/\/+$/, "");
+  }
+  const apiUrl = import.meta.env.VITE_API_URL;
+  if (apiUrl) {
+    const cleaned = apiUrl.replace(/\/api\/?$/, "").replace(/\/+$/, "");
+    if (cleaned.startsWith("https://")) {
+      return cleaned.replace(/^https:\/\//, "wss://");
+    }
+    if (cleaned.startsWith("http://")) {
+      return cleaned.replace(/^http:\/\//, "ws://");
+    }
+  }
+  return "ws://127.0.0.1:8000";
+}
+
+const WS_BASE = resolveWsBase();
 
 export function useGameSocket({ gameId, playerId, playerToken, onStateUpdate }) {
   const [connectionStatus, setConnectionStatus] = useState("disconnected");

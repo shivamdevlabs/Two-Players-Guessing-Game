@@ -1,4 +1,6 @@
-const API_BASE = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/api";
+const rawApi = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/api";
+const normalizedRaw = rawApi.replace(/\/+$/, "");
+const API_BASE = normalizedRaw.endsWith("/api") ? normalizedRaw : `${normalizedRaw}/api`;
 
 const SESSION_KEY = "two_player_game_session";
 
