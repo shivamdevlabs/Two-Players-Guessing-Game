@@ -407,6 +407,94 @@ body {
   border: 1px solid var(--border-subtle);
 }
 
+/* Solo vs Computer Banner */
+.solo-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(99, 102, 241, 0.08));
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  border-radius: 0.85rem;
+  text-decoration: none;
+  color: var(--text-main);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.08);
+  gap: 0.75rem;
+}
+
+.solo-banner:hover {
+  border-color: rgba(6, 182, 212, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(6, 182, 212, 0.2);
+}
+
+.solo-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: left;
+  min-width: 0;
+  flex: 1;
+}
+
+.solo-banner-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 0.6rem;
+  background: rgba(6, 182, 212, 0.18);
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.solo-banner-text {
+  min-width: 0;
+  flex: 1;
+}
+
+.solo-banner-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.solo-pill {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.1rem 0.4rem;
+  background: rgba(6, 182, 212, 0.2);
+  color: var(--cyan);
+  border-radius: 1rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.solo-banner-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.solo-banner-cta {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cyan);
+  flex-shrink: 0;
+}
+
 /* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
@@ -415,6 +503,15 @@ body {
 
 .animate-fade-in {
   animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
 }
 
 /* Responsive Utility Classes */
@@ -514,26 +611,28 @@ body {
 
 @media (max-width: 640px) {
   .main-content {
-    padding: 1rem 0.75rem;
+    padding: 0.85rem 0.65rem;
+    justify-content: flex-start;
   }
 
   .glass-card {
     padding: 1.25rem 1rem;
     border-radius: 1rem;
+    margin-bottom: 1rem;
   }
 
   .navbar {
-    padding: 0.6rem 0.85rem;
+    padding: 0.55rem 0.75rem;
   }
 
   .nav-brand {
     font-size: 1.05rem;
-    gap: 0.5rem;
+    gap: 0.45rem;
   }
 
   .nav-brand img {
-    width: 26px !important;
-    height: 26px !important;
+    width: 24px !important;
+    height: 24px !important;
   }
 
   .results-grid {
@@ -556,14 +655,15 @@ body {
   }
 
   .lobby-rules-summary {
-    gap: 0.75rem;
-    padding: 0.6rem 0.9rem;
+    gap: 0.6rem;
+    padding: 0.5rem 0.85rem;
     width: 100%;
+    font-size: 0.8rem;
   }
 
   .room-code-badge {
-    font-size: 1.3rem;
-    padding: 0.5rem 0.85rem;
+    font-size: 1.25rem;
+    padding: 0.45rem 0.75rem;
     letter-spacing: 0.12em;
     width: 100%;
     justify-content: space-between;
@@ -572,13 +672,25 @@ body {
   .gameplay-header {
     flex-direction: column-reverse;
     text-align: center;
-    gap: 1rem;
+    gap: 0.85rem;
+    padding-bottom: 1rem;
   }
 
   .gameplay-status-row {
     flex-direction: column;
     text-align: center;
-    gap: 0.4rem;
+    gap: 0.35rem;
+    padding: 0.65rem 1rem;
+  }
+
+  .history-table th, .history-table td {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.82rem;
+  }
+
+  .feedback-badge {
+    padding: 0.25rem 0.55rem;
+    font-size: 0.78rem;
   }
 
   .footer-content {
@@ -608,7 +720,7 @@ body {
   }
 
   .btn-vs-computer {
-    padding: 0.45rem 0.6rem !important;
+    padding: 0.4rem 0.55rem !important;
   }
 
   .guess-form {
@@ -622,5 +734,9 @@ body {
 
   .time-presets-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .solo-banner-subtitle {
+    display: none;
   }
 }

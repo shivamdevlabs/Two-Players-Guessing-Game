@@ -104,26 +104,26 @@ export function HomePage({ onGameJoined }) {
   return (
     <div className="glass-card animate-fade-in" style={{ maxWidth: "560px", margin: "0 auto" }}>
       {/* Title & Concept */}
-      <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+      <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
         <div
           style={{
-            width: "60px",
-            height: "60px",
-            borderRadius: "1rem",
+            width: "52px",
+            height: "52px",
+            borderRadius: "0.85rem",
             background: "linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(6, 182, 212, 0.2))",
             display: "inline-flex",
             alignItems: "center",
             justifyContent: "center",
-            marginBottom: "1rem",
+            marginBottom: "0.75rem",
             border: "1px solid rgba(99, 102, 241, 0.3)"
           }}
         >
-          <Swords size={32} color="#818cf8" />
+          <Swords size={28} color="#818cf8" />
         </div>
-        <h1 style={{ fontSize: "clamp(1.4rem, 4.5vw, 2rem)", fontWeight: "800", letterSpacing: "-0.03em" }}>
+        <h1 style={{ fontSize: "clamp(1.3rem, 4.5vw, 1.85rem)", fontWeight: "800", letterSpacing: "-0.03em" }}>
           TWO PLAYER GUESSING GAME
         </h1>
-        <p style={{ color: "var(--text-muted)", fontSize: "0.95rem", marginTop: "0.5rem" }}>
+        <p style={{ color: "var(--text-muted)", fontSize: "0.9rem", marginTop: "0.35rem" }}>
           Pick secret numbers, outsmart your opponent, and guess with fewer attempts!
         </p>
       </div>
@@ -135,107 +135,53 @@ export function HomePage({ onGameJoined }) {
             background: "rgba(99, 102, 241, 0.1)",
             border: "1px solid rgba(99, 102, 241, 0.3)",
             borderRadius: "0.85rem",
-            padding: "0.85rem 1.25rem",
+            padding: "0.75rem 1rem",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            marginBottom: "1.5rem"
+            marginBottom: "1.25rem",
+            gap: "0.5rem",
+            flexWrap: "wrap"
           }}
         >
-          <div style={{ fontSize: "0.9rem" }}>
+          <div style={{ fontSize: "0.88rem" }}>
             <span>Resume active room: </span>
             <strong style={{ fontFamily: "var(--font-mono)", color: "var(--primary-light)" }}>
               {recentSession.room_code}
             </strong>
           </div>
-          <button onClick={handleResumeRecent} className="btn btn-primary" style={{ padding: "0.4rem 0.9rem", fontSize: "0.8rem" }}>
+          <button onClick={handleResumeRecent} className="btn btn-primary" style={{ padding: "0.35rem 0.85rem", fontSize: "0.8rem" }}>
             Rejoin
           </button>
         </div>
       )}
 
       {/* Single Player vs Computer Switcher Card */}
-      <div style={{ marginBottom: "1.75rem" }}>
+      <div style={{ marginBottom: "1.5rem" }}>
         <a
           href="https://guessify-numbers-challenge.netlify.app/"
           target="_blank"
           rel="noopener noreferrer"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "0.85rem 1.25rem",
-            background: "linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(99, 102, 241, 0.08))",
-            border: "1px solid rgba(6, 182, 212, 0.35)",
-            borderRadius: "0.85rem",
-            textDecoration: "none",
-            color: "var(--text-main)",
-            transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
-            boxShadow: "0 4px 15px rgba(6, 182, 212, 0.08)"
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = "rgba(6, 182, 212, 0.6)";
-            e.currentTarget.style.transform = "translateY(-2px)";
-            e.currentTarget.style.boxShadow = "0 8px 25px rgba(6, 182, 212, 0.2)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = "rgba(6, 182, 212, 0.35)";
-            e.currentTarget.style.transform = "translateY(0)";
-            e.currentTarget.style.boxShadow = "0 4px 15px rgba(6, 182, 212, 0.08)";
-          }}
+          className="solo-banner"
           title="Play Single Player Mode vs Computer"
         >
-          <div style={{ display: "flex", alignItems: "center", gap: "0.85rem", textAlign: "left" }}>
-            <div
-              style={{
-                width: "40px",
-                height: "40px",
-                borderRadius: "0.6rem",
-                background: "rgba(6, 182, 212, 0.18)",
-                border: "1px solid rgba(6, 182, 212, 0.4)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexShrink: 0
-              }}
-            >
-              <Bot size={22} color="var(--cyan)" />
+          <div className="solo-banner-left">
+            <div className="solo-banner-icon">
+              <Bot size={20} color="var(--cyan)" />
             </div>
-            <div>
-              <div style={{ fontWeight: "700", fontSize: "0.95rem", display: "flex", alignItems: "center", gap: "0.45rem" }}>
+            <div className="solo-banner-text">
+              <div className="solo-banner-title">
                 <span>Play Solo vs Computer</span>
-                <span
-                  style={{
-                    fontSize: "0.65rem",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.06em",
-                    padding: "0.15rem 0.45rem",
-                    background: "rgba(6, 182, 212, 0.2)",
-                    color: "var(--cyan)",
-                    borderRadius: "1rem",
-                    fontWeight: "800"
-                  }}
-                >
-                  1-Player
-                </span>
+                <span className="solo-pill">1-Player</span>
               </div>
-              <div style={{ fontSize: "0.8rem", color: "var(--text-muted)", marginTop: "0.15rem" }}>
-                Play single player on Guessify Numbers Challenge
+              <div className="solo-banner-subtitle">
+                Practice against computer on Guessify
               </div>
             </div>
           </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "0.3rem",
-              fontSize: "0.85rem",
-              fontWeight: "600",
-              color: "var(--cyan)"
-            }}
-          >
+          <div className="solo-banner-cta">
             <span>Play</span>
-            <ExternalLink size={15} />
+            <ExternalLink size={14} />
           </div>
         </a>
       </div>

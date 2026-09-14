@@ -108,6 +108,26 @@ export function App() {
 
   // Determine which screen to render
   const renderCurrentScreen = () => {
+    if (loading && session && !gameState) {
+      return (
+        <div className="glass-card animate-fade-in" style={{ maxWidth: "560px", margin: "0 auto", textAlign: "center", padding: "3rem 1.5rem" }}>
+          <div
+            style={{
+              width: "38px",
+              height: "38px",
+              border: "3px solid rgba(99, 102, 241, 0.2)",
+              borderTopColor: "var(--primary)",
+              borderRadius: "50%",
+              margin: "0 auto 1.25rem auto"
+            }}
+            className="spin"
+          />
+          <h3 style={{ fontSize: "1.15rem", fontWeight: "700", marginBottom: "0.4rem" }}>Connecting to Room...</h3>
+          <p style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>Restoring your live game session</p>
+        </div>
+      );
+    }
+
     if (!session || !gameState) {
       return <HomePage onGameJoined={handleGameJoined} />;
     }
@@ -168,12 +188,6 @@ export function App() {
       <main className="main-content">
         {disconnectAlert && gameState?.status !== "GAME_OVER" && (
           <DisconnectAlert alert={disconnectAlert} onClose={clearDisconnectAlert} />
-        )}
-
-        {loading && !gameState && (
-          <div style={{ textAlign: "center", padding: "3rem", color: "var(--text-muted)" }}>
-            Loading game state...
-          </div>
         )}
 
         {fetchError && (
