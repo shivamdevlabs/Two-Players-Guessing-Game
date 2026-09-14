@@ -28,25 +28,14 @@ export function Footer() {
         background: "rgba(7, 9, 19, 0.75)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
-        fontSize: "0.9rem",
+        fontSize: "0.88rem",
         color: "var(--text-dim)",
         marginTop: "auto",
         width: "100%",
-        padding: "1.25rem 2rem"
+        padding: "1rem 1.25rem"
       }}
     >
-      <div
-        style={{
-          maxWidth: "1080px",
-          margin: "0 auto",
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: "1rem"
-        }}
-      >
+      <div className="footer-content">
         {/* Left Side: Copyright & Portfolio */}
         <div style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", flexWrap: "wrap" }}>
           <span>&copy; 2026</span>

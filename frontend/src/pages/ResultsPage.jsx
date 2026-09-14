@@ -83,7 +83,7 @@ export function ResultsPage({ gameState, session, onPlayAgain, onHome }) {
         Match Concluded
       </div>
 
-      <h1 style={{ fontSize: "2.5rem", fontWeight: "800", margin: "0.5rem 0" }}>
+      <h1 style={{ fontSize: "clamp(1.6rem, 5vw, 2.5rem)", fontWeight: "800", margin: "0.5rem 0" }}>
         {isDraw ? "MATCH DRAW!" : `🏆 ${winner?.winner_name} WINS!`}
       </h1>
 
@@ -91,29 +91,21 @@ export function ResultsPage({ gameState, session, onPlayAgain, onHome }) {
       <div
         style={{
           display: "inline-block",
-          padding: "0.5rem 1.25rem",
+          padding: "0.45rem 1.15rem",
           borderRadius: "2rem",
           background: "rgba(255, 255, 255, 0.05)",
           border: "1px solid var(--border-subtle)",
           color: "var(--primary-light)",
-          fontSize: "0.95rem",
+          fontSize: "0.9rem",
           fontWeight: "600",
-          marginBottom: "2rem"
+          marginBottom: "1.75rem"
         }}
       >
         Reason: {winner?.reason || "Fewer guesses"}
       </div>
 
-      {/* Side by Side Scorecards */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "1.5rem",
-          textAlign: "left",
-          marginBottom: "2rem"
-        }}
-      >
+      {/* Side by Side / Stacked Scorecards */}
+      <div className="results-grid">
         {/* Player 1 Card */}
         <div
           style={{
@@ -262,12 +254,12 @@ export function ResultsPage({ gameState, session, onPlayAgain, onHome }) {
       </div>
 
       {/* Action Buttons */}
-      <div style={{ display: "flex", justifyContent: "center", gap: "1rem", flexWrap: "wrap" }}>
-        <button onClick={onPlayAgain} className="btn btn-primary" style={{ padding: "0.9rem 2rem" }}>
+      <div className="results-actions">
+        <button onClick={onPlayAgain} className="btn btn-primary" style={{ padding: "0.85rem 1.75rem" }}>
           <RotateCcw size={18} />
           <span>Play Again (New Match)</span>
         </button>
-        <button onClick={onHome} className="btn btn-secondary" style={{ padding: "0.9rem 1.75rem" }}>
+        <button onClick={onHome} className="btn btn-secondary" style={{ padding: "0.85rem 1.5rem" }}>
           <Home size={18} />
           <span>Back to Home</span>
         </button>

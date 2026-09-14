@@ -29,17 +29,17 @@ export function Header({ gameState, connectionStatus, onLeaveGame }) {
         <span className="brand-badge">2-Player</span>
       </div>
 
-      <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap" }}>
+      <div className="navbar-actions" style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
         {/* Switch to Single Player vs Computer Button */}
         <a
           href="https://guessify-numbers-challenge.netlify.app/"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-secondary"
+          className="btn btn-secondary btn-vs-computer"
           style={{
-            padding: "0.4rem 0.85rem",
-            fontSize: "0.82rem",
-            gap: "0.4rem",
+            padding: "0.35rem 0.75rem",
+            fontSize: "0.8rem",
+            gap: "0.35rem",
             textDecoration: "none",
             border: "1px solid rgba(6, 182, 212, 0.35)",
             background: "rgba(6, 182, 212, 0.08)",
@@ -51,21 +51,23 @@ export function Header({ gameState, connectionStatus, onLeaveGame }) {
           <span>Vs Computer</span>
           <ExternalLink size={12} style={{ opacity: 0.6 }} />
         </a>
+
         {gameState?.room_code && gameState?.status !== "GAME_OVER" && (
           <button
             onClick={handleCopyCode}
             className="btn btn-secondary"
-            style={{ padding: "0.4rem 0.85rem", fontSize: "0.85rem", fontFamily: "var(--font-mono)" }}
+            style={{ padding: "0.35rem 0.65rem", fontSize: "0.8rem", fontFamily: "var(--font-mono)" }}
             title="Click to copy room code"
           >
-            Room: <strong style={{ color: "var(--primary-light)" }}>{gameState.room_code}</strong>
-            {copied ? <Check size={14} color="var(--emerald)" /> : <Copy size={14} />}
+            <span>Room: </span>
+            <strong style={{ color: "var(--primary-light)" }}>{gameState.room_code}</strong>
+            {copied ? <Check size={13} color="var(--emerald)" /> : <Copy size={13} />}
           </button>
         )}
 
-        <div className="connection-pill">
+        <div className="connection-pill" title={`Connection: ${connectionStatus}`}>
           <span className={`status-dot ${connectionStatus}`}></span>
-          <span style={{ textTransform: "capitalize", color: "var(--text-muted)", fontSize: "0.75rem" }}>
+          <span className="connection-pill-text" style={{ textTransform: "capitalize", color: "var(--text-muted)", fontSize: "0.75rem" }}>
             {connectionStatus}
           </span>
         </div>
@@ -74,11 +76,10 @@ export function Header({ gameState, connectionStatus, onLeaveGame }) {
           <button
             onClick={onLeaveGame}
             className="btn btn-secondary"
-            style={{ padding: "0.4rem 0.8rem", fontSize: "0.8rem" }}
+            style={{ padding: "0.35rem 0.6rem", fontSize: "0.8rem" }}
             title="Leave Game"
           >
             <LogOut size={14} />
-            <span style={{ display: "none", sm: "inline" }}>Leave</span>
           </button>
         )}
       </div>

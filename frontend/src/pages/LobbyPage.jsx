@@ -90,20 +90,7 @@ export function LobbyPage({ gameState, session, onStateUpdated }) {
       </div>
 
       {/* Game Rules summary badge */}
-      <div
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          gap: "1.25rem",
-          background: "rgba(255, 255, 255, 0.03)",
-          border: "1px solid var(--border-subtle)",
-          padding: "0.6rem 1.25rem",
-          borderRadius: "2rem",
-          fontSize: "0.85rem",
-          color: "var(--text-muted)",
-          marginBottom: "2rem"
-        }}
-      >
+      <div className="lobby-rules-summary">
         <span style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
           <Clock size={15} color="var(--cyan)" />
           Time Limit: <strong style={{ color: "var(--text-main)" }}>{timeLimitMins} Minutes</strong>
@@ -115,15 +102,7 @@ export function LobbyPage({ gameState, session, onStateUpdated }) {
       </div>
 
       {/* Players Row */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "1.25rem",
-          marginBottom: "2rem",
-          textAlign: "left"
-        }}
-      >
+      <div className="lobby-players-grid">
         {/* Me Card */}
         <div
           style={{
@@ -201,7 +180,7 @@ export function LobbyPage({ gameState, session, onStateUpdated }) {
           onClick={handleToggleReady}
           disabled={!hasOpponent || togglingReady}
           className={`btn ${isReady ? "btn-secondary" : "btn-primary"}`}
-          style={{ minWidth: "220px", padding: "1rem 2.5rem", fontSize: "1.1rem" }}
+          style={{ minWidth: "200px", maxWidth: "100%", width: "auto", padding: "0.9rem 2.2rem", fontSize: "1.05rem" }}
         >
           {isReady ? (
             <>

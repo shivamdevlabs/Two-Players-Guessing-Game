@@ -120,7 +120,7 @@ export function HomePage({ onGameJoined }) {
         >
           <Swords size={32} color="#818cf8" />
         </div>
-        <h1 style={{ fontSize: "2rem", fontWeight: "800", letterSpacing: "-0.03em" }}>
+        <h1 style={{ fontSize: "clamp(1.4rem, 4.5vw, 2rem)", fontWeight: "800", letterSpacing: "-0.03em" }}>
           TWO PLAYER GUESSING GAME
         </h1>
         <p style={{ color: "var(--text-muted)", fontSize: "0.95rem", marginTop: "0.5rem" }}>
@@ -328,7 +328,7 @@ export function HomePage({ onGameJoined }) {
             <label style={{ display: "block", fontSize: "0.85rem", color: "var(--text-muted)", marginBottom: "0.5rem" }}>
               Time Limit (Per Player)
             </label>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0.5rem", marginBottom: "0.75rem" }}>
+            <div className="time-presets-grid">
               {TIME_PRESETS.map((preset) => (
                 <button
                   type="button"

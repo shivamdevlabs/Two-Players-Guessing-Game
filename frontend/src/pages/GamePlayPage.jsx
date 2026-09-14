@@ -109,16 +109,7 @@ export function GamePlayPage({ gameState, session, remainingSeconds, onStateUpda
   return (
     <div className="glass-card animate-fade-in" style={{ maxWidth: "800px", margin: "0 auto" }}>
       {/* Round Header Bar */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          borderBottom: "1px solid var(--border-subtle)",
-          paddingBottom: "1.25rem",
-          marginBottom: "1.5rem"
-        }}
-      >
+      <div className="gameplay-header">
         <div>
           <div
             style={{
@@ -161,18 +152,7 @@ export function GamePlayPage({ gameState, session, remainingSeconds, onStateUpda
       {isMyTurn ? (
         <div>
           {/* Status Chips */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              background: "rgba(255, 255, 255, 0.03)",
-              border: "1px solid var(--border-subtle)",
-              borderRadius: "0.85rem",
-              padding: "0.75rem 1.25rem",
-              marginBottom: "1.5rem"
-            }}
-          >
+          <div className="gameplay-status-row">
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.9rem" }}>
               <Hash size={16} color="var(--primary-light)" />
               <span>Total Guesses:</span>
@@ -245,7 +225,7 @@ export function GamePlayPage({ gameState, session, remainingSeconds, onStateUpda
           )}
 
           {/* Guess Input Form */}
-          <form onSubmit={handleGuessSubmit} autoComplete="off" style={{ display: "flex", gap: "0.75rem", marginBottom: "2rem" }}>
+          <form onSubmit={handleGuessSubmit} autoComplete="off" className="guess-form">
             <input
               ref={inputRef}
               type="number"
@@ -256,7 +236,7 @@ export function GamePlayPage({ gameState, session, remainingSeconds, onStateUpda
               value={guessInput}
               onChange={(e) => setGuessInput(e.target.value)}
               style={{
-                fontSize: "1.3rem",
+                fontSize: "1.2rem",
                 fontFamily: "var(--font-mono)",
                 fontWeight: "700",
                 letterSpacing: "0.05em"
@@ -268,7 +248,7 @@ export function GamePlayPage({ gameState, session, remainingSeconds, onStateUpda
               type="submit"
               className="btn btn-cyan"
               disabled={submitting || !guessInput}
-              style={{ padding: "0 2rem", fontSize: "1.1rem" }}
+              style={{ padding: "0.85rem 2rem", fontSize: "1.05rem" }}
             >
               <Send size={18} />
               <span>Guess</span>
@@ -276,7 +256,7 @@ export function GamePlayPage({ gameState, session, remainingSeconds, onStateUpda
           </form>
 
           {/* Guess History for Current Round */}
-          <div>
+          <div style={{ overflowX: "auto", width: "100%" }}>
             <h3 style={{ fontSize: "1rem", fontWeight: "700", color: "var(--text-muted)", marginBottom: "0.5rem" }}>
               Your Guess History
             </h3>
